@@ -21,7 +21,7 @@ class Square extends shape {
     super(data);
     }
     render () {
-        return `<circle cx="50" cy="50" r="50" fill="${this.shapeColor}" />`;
+        return `<rect width="100" height="100" rx="15" fill="${this.shapeColor}" />`;
     }
 };
 
@@ -30,7 +30,7 @@ class Triangle extends shape {
     super(data);
     }
     render () {
-        return `<circle cx="50" cy="50" r="50" fill="${this.shapeColor}" />`;
+        return `<polygon points="100 0, 0 ,0 50, 100" fill="${this.logoColour}"  />`;
      }
 };
 

@@ -1,7 +1,9 @@
 const inquirer = require('inquirer');
-const fs = requie('fs');
+const fs = require('fs');
+const shapes = require('./library/shapes')
 
-const questionsArray = [
+inquirer
+    .prompt([
     {
         type: 'input',
         name: 'characters',
@@ -16,7 +18,7 @@ const questionsArray = [
         type: 'list',
         name: 'shape',
         message: 'Please pick from the available list of shapes:',
-        choices: ["Triangle, Square, Circle"],
+        choices: ["Triangle", "Square", "Circle"],
     },
     {
         type: 'input',
@@ -24,25 +26,14 @@ const questionsArray = [
         message: 'What would you like the shape color to be?',
     },
 
-];
+])
+.then((data) => {
+    const svgPath = './dist/logo.svg';
+    const finalLogo = generateLogo(data);
 
-function writetoFile(fileName, data) {
-    fs.writeFile(fileName, data, (err) => {
-        if(err) {
-            console.log(err);
-        }
-        else {
-            console.log('Logo.svg create!'); 
-        }
-    })
-};
+    fs.writeFile(svgPath, generateSvg(finalLogo), (err) => 
+        err ? console.error(err) : console.log('Generated logo.svg')
+    );
+})
 
-function init() {
-    inquirer.prompt(questionsArray)
-        .then((data) => {
-            const logo = generateLogo(data);
-            writetoFile('Logo.svg', logo); 
-        })
-};
-
-init();
+.catch((err) => console.error(err)); 

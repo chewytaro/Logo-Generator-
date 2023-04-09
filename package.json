@@ -1,21 +1,18 @@
 {
-  "name": "Logo-Generator-"
+  "name": "logo-generator-",
   "version": "1.0.0",
   "description": "",
-  "main": "fizz.js",
-  "directories": {
-    "test": "tests"
-  },
+  "main": "index.js",
   "scripts": {
     "test": "jest"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "jest": "^26.5.2"
+  "repository": {
+    "type": "git",
+    "url": "logo-generator-"
   },
+  "author": "Wendy Vu",
+  "license": "ISC",
   "dependencies": {
-    "inquirer": "^9.1.4"
+    "inquirer": "^8.2.4"
   }
 }
