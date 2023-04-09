@@ -1,6 +1,7 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
-const shapes = require('./library/shapes')
+const { generateSvg } = require('./library/shapes.js');
+const { generateLogo } = require('./library/generateLogo.js');
 
 inquirer
     .prompt([

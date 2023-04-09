@@ -52,3 +52,6 @@ function generateLogo(data) {
 
 
 module.exports = generateLogo; 
+module.exports = Circle;
+module.exports = Triangle;
+module.exports = Square; 
