@@ -13,7 +13,7 @@ const questions = [
         type: 'input',
         message: 'Enter the text color. You can use a keyword (i.e blue) or hexadecimal number.',
         name: 'textColor',
-        default: "blue",
+        default: "black",
     },
     {
         type: 'list',
@@ -26,7 +26,7 @@ const questions = [
         type: 'input',
         message: 'Enter the logo color. You can use a keyword (i.e blue) or hexadecimal number.',
         name: 'shapeColor',
-        default: "#DFFFFD",
+        default: "#ffb6c1",
     },
 ];
 
