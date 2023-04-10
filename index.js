@@ -1,40 +1,56 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
-const { generateSvg } = require('./library/shapes.js');
-const { generateLogo } = require('./library/generateLogo.js');
+const shapeClass = require('./lib/generateLogo.js');
 
-inquirer
-    .prompt([
+const questions = [
     {
         type: 'input',
-        name: 'characters',
-        message: 'Please choose up to three characters for your logo:',
+        message: 'Create a initials. (Up to three characters and no ".")',
+        name: 'initial',
+        default: "HEY",
     },
     {
         type: 'input',
+        message: 'Enter the text color. You can use a keyword (i.e blue) or hexadecimal number.',
         name: 'textColor',
-        message: 'What would you like the color of the text to be?',
+        default: "blue",
     },
     {
         type: 'list',
+        message: 'What shape do you do want for your logo? Use arrow key Up and Down to navigate the list of choices. Press enter when you have decided. ',
         name: 'shape',
-        message: 'Please pick from the available list of shapes:',
-        choices: ["Triangle", "Square", "Circle"],
+        choices: ["Triangle", "Circle", "Square"],
+        default: "Circle",
     },
     {
         type: 'input',
+        message: 'Enter the logo color. You can use a keyword (i.e blue) or hexadecimal number.',
         name: 'shapeColor',
-        message: 'What would you like the shape color to be?',
+        default: "#DFFFFD",
     },
+];
 
-])
-.then((data) => {
-    const svgPath = './dist/logo.svg';
-    const finalLogo = generateLogo(data);
-
-    fs.writeFile(svgPath, generateSvg(finalLogo), (err) => 
-        err ? console.error(err) : console.log('Generated logo.svg')
+function writeToFile(fileName, data) {
+    fs.writeFile(fileName, data, (err) => 
+        err ? console.error(err) : console.log(`Check file name called ${fileName}`)
     );
-})
+}
 
-.catch((err) => console.error(err)); 
+function askUsers(){
+    inquirer
+        .prompt(questions)
+    .then((answers) => {
+        var newLogo = shapeClass.createLogo(answers);
+        var renderedLogo = shapeClass.renderSVG(newLogo);
+        writeToFile(`./dist/logo.svg`, renderedLogo);
+    })
+    .catch((error) =>{
+        if (error.isTtyError){
+            console.log("Prompt couldn't be rendered in the current environment");
+        } else {
+            console.log("How?");
+        }
+    });
+}
+
+askUsers();

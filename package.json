@@ -13,6 +13,12 @@
   "author": "Wendy Vu",
   "license": "ISC",
   "dependencies": {
+    "color": "^4.2.3",
     "inquirer": "^8.2.4"
+  },
+  "devDependencies": {
+    "colors.css": "^3.0.0",
+    "is-css3-color": "^1.0.0",
+    "jest": "^29.5.0"
   }
 }
