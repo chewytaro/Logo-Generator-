@@ -16,6 +16,7 @@
 
 # Installation: 
   - Clone this repository to whatever system that you are using, run an npm installation beforehand and use node to start the project to access this logo-generator.
+  - Follow this video instruction for better understanding: https://drive.google.com/file/d/10C2vAMgmr0BZx_kYAsj9szLCLh1Dt0My/view
 
 # Usage:
   - N/A
